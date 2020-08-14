@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="gan0803.pj.contentresolverclient">
 
+    <uses-permission android:name="gan0803.pj.sharedpreferencestudy.permission.PROVIDER" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"

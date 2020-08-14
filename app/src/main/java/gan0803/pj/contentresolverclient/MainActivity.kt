@@ -20,10 +20,22 @@ class MainActivity : AppCompatActivity() {
         val auth = MyPreferences.AUTHORITY
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             cr.call(auth, MyPreferences.READ_PREFERENCE_METHOD, null, null)
+            cr.call(
+                auth,
+                MyPreferences.PUT_STRING_PREFERENCE_METHOD,
+                System.currentTimeMillis().toString(),
+                null
+            )
             val bundle = cr.call(auth, MyPreferences.GET_STRING_PREFERENCE_METHOD, null, null)
             val str: String = bundle?.getString(MyPreferences.SAVED_STRING_KEY) ?: ""
             Log.d(TAG, "get: $str")
         } else {
+            cr.call(
+                uri,
+                MyPreferences.PUT_STRING_PREFERENCE_METHOD,
+                System.currentTimeMillis().toString(),
+                null
+            )
             cr.call(uri, MyPreferences.READ_PREFERENCE_METHOD, null, null)
             val bundle = cr.call(uri, MyPreferences.GET_STRING_PREFERENCE_METHOD, null, null)
             val str: String = bundle?.getString(MyPreferences.SAVED_STRING_KEY) ?: ""
